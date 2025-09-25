@@ -12,8 +12,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Srishti News - Latest News and Updates",
-  description: "Stay updated with the latest news, articles, and stories from Srishti News",
+  title: "SRISHTI NEWS - ସର୍ବଶେଷ ସମାଚାର ଓ ଅପଡେଟ୍",
+  description: "SRISHTI NEWS ସହିତ ସର୍ବଶେଷ ସମାଚାର, ଆର୍ଟିକେଲ୍ ଏବଂ କାହାଣୀ ସହିତ ଅପଡେଟ୍ ରହନ୍ତୁ। ଆପଣଙ୍କ ବିଶ୍ୱସ୍ତ ସମାଚାର ସାଥୀ କହିବେ ଆପଣଙ୍କ କଥା।",
+  keywords: "ଓଡ଼ିଆ ନ୍ୟୁଜ୍, ଓଡ଼ିଶା ସମାଚାର, SRISHTI NEWS, Odia News, Odisha News",
+  authors: [{ name: "SRISHTI NEWS Team" }],
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default function RootLayout({ children }) {

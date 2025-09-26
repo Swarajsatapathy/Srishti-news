@@ -1,21 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #f8fafc;
+  --foreground: #1e293b;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   overflow-x: hidden;
   line-height: 1.6;
 }
@@ -43,6 +36,36 @@ body {
   line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+/* Breaking News Animation */
+@keyframes scroll-news {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(-10px); }
+  100% { transform: translateX(0); }
+}
+
+.animate-scroll-news {
+  animation: scroll-news 3s ease-in-out infinite;
+}
+
+/* Hover Effects */
+.hover-lift:hover {
+  transform: translateY(-2px);
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Fixed Social Sidebar */
+.fixed-social-sidebar {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+}
+
+.fixed-social-sidebar.hidden {
+  transform: translateY(-50%) translateX(-10px);
 }
 
 /* Smooth animations */

@@ -97,22 +97,7 @@ export default function AuthPage() {
           </div>
         )}
 
-        <div className="mb-6 bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-md">
-          <div className="flex">
-            <div className="flex-shrink-0">
-              <span className="text-xl">💡</span>
-            </div>
-            <div className="ml-3">
-              <p className="text-sm text-blue-700 font-bold">
-                Demo Access
-              </p>
-              <ul className="list-disc list-inside text-sm text-blue-600 mt-1 ml-1">
-                <li>Admin: <strong>admin@sristhi.com</strong> / <strong>admin123</strong></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
+ 
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="rounded-md shadow-sm space-y-4">
 

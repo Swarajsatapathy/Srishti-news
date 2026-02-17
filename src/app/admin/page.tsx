@@ -174,7 +174,7 @@ export default function AdminPage() {
                     id="title"
                     name="title"
                     type="text"
-                    className="appearance-none rounded-lg block w-full px-3 py-2 border border-slate-300 placeholder-slate-400 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm"
+                    className="text-black appearance-none rounded-lg block w-full px-3 py-2 border border-slate-300 placeholder-slate-400 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm"
                     placeholder="Article title"
                     value={formData.title}
                     onChange={handleChange}
@@ -191,7 +191,7 @@ export default function AdminPage() {
                       name="category"
                       value={formData.category}
                       onChange={handleChange}
-                      className="appearance-none rounded-lg block w-full px-3 py-2 border border-slate-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm"
+                      className="text-black appearance-none rounded-lg block w-full px-3 py-2 border border-slate-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm"
                     >
                       <option value="General">General</option>
                       <option value="State">State</option>
@@ -209,7 +209,7 @@ export default function AdminPage() {
                       name="mediaType"
                       value={formData.mediaType}
                       onChange={handleChange}
-                      className="appearance-none rounded-lg block w-full px-3 py-2 border border-slate-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm"
+                      className="text-black appearance-none rounded-lg block w-full px-3 py-2 border border-slate-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm"
                     >
                       <option value="article">Article</option>
                       <option value="video">Video</option>
@@ -225,7 +225,7 @@ export default function AdminPage() {
                     <input
                       name="videoUrl"
                       type="text"
-                      className="appearance-none rounded-lg block w-full px-3 py-2 border border-slate-300 placeholder-slate-400 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm"
+                      className="text-black appearance-none rounded-lg block w-full px-3 py-2 border border-slate-300 placeholder-slate-400 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm"
                       placeholder="e.g. dQw4w9WgXcQ"
                       value={formData.videoUrl}
                       onChange={handleChange}
@@ -245,7 +245,7 @@ export default function AdminPage() {
                     id="content"
                     name="content"
                     rows={4}
-                    className="appearance-none rounded-lg block w-full px-3 py-2 border border-slate-300 placeholder-slate-400 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm"
+                    className="text-black appearance-none rounded-lg block w-full px-3 py-2 border border-slate-300 placeholder-slate-400 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm"
                     placeholder="Article content..."
                     value={formData.content}
                     onChange={handleChange}
@@ -264,7 +264,7 @@ export default function AdminPage() {
                     id="imageUrl"
                     name="imageUrl"
                     type="url"
-                    className="appearance-none rounded-lg block w-full px-3 py-2 border border-slate-300 placeholder-slate-400 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm"
+                    className="text-black appearance-none rounded-lg block w-full px-3 py-2 border border-slate-300 placeholder-slate-400 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm"
                     placeholder="https://example.com/image.jpg"
                     value={formData.imageUrl}
                     onChange={handleChange}

@@ -50,10 +50,7 @@ export default function FixedSocialSidebar() {
   };
 
   return (
-    <div
-      className="hidden xl:block fixed top-1/2 -translate-y-1/2 z-50"
-      style={{ left: "clamp(16px, calc((100vw - 1340px) / 2 - 72px), 120px)" }}
-    >
+    <div className="hidden lg:block fixed top-1/2 -translate-y-1/2 z-50 left-0">
       <div className="flex items-start">
         {/* Social Media Icons Container */}
         <div

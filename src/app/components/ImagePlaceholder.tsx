@@ -37,7 +37,7 @@ export default function ImagePlaceholder({
       style={{ width: className.includes("w-full") ? "100%" : width, height: className.includes("h-full") ? "100%" : height }}
     >
       <div
-        className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-300"
+        className="absolute inset-0 flex items-center justify-center bg-linear-to-br from-gray-100 to-gray-300"
         style={{
           backgroundImage: `url("${createPlaceholder(width, height, text)}")`,
           backgroundSize: "cover",

@@ -3,6 +3,13 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --ink-strong: #121526;
+  --ink-muted: #5a6478;
+  --brand-red: #b91c2c;
+  --brand-red-dark: #971624;
+  --brand-cream: #f4f1ea;
+  --brand-blue: #1f2a44;
+  --brand-purple: #5b4db3;
 }
 
 @theme {
@@ -19,6 +26,27 @@
 
 body {
   color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f6fa;
+  font-family: var(--font-body), serif;
+}
+
+.heading-font {
+  font-family: var(--font-headline), sans-serif;
+}
+
+.ticker-track {
+  animation: ticker-scroll 28s linear infinite;
+}
+
+.ticker:hover .ticker-track {
+  animation-play-state: paused;
+}
+
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }

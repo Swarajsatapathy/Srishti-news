@@ -1,0 +1,21 @@
+src/app/api/news/route.ts(37,9): error TS2353: Object literal may only specify known properties, and 'category' does not exist in type '(Without<NewsCreateInput, NewsUncheckedCreateInput> & NewsUncheckedCreateInput) | (Without<...> & NewsCreateInput)'.
+src/app/components/MainContent.tsx(38,18): error TS2353: Object literal may only specify known properties, and 'featured' does not exist in type 'NewsWhereInput'.
+src/app/components/MainContent.tsx(43,18): error TS2353: Object literal may only specify known properties, and 'featured' does not exist in type 'NewsWhereInput'.
+src/app/components/MainContent.tsx(48,18): error TS2353: Object literal may only specify known properties, and 'trending' does not exist in type 'NewsWhereInput'.
+src/app/components/MainContent.tsx(53,18): error TS2353: Object literal may only specify known properties, and 'mediaType' does not exist in type 'NewsWhereInput'.
+src/app/components/MotionWrapper.tsx(39,7): error TS2322: Type '{ hidden: { opacity: number; y: number; x: number; }; visible: { opacity: number; y: number; x: number; transition: { duration: number; ease: string; delay: number; }; }; }' is not assignable to type 'Variants'.
+  Property 'visible' is incompatible with index signature.
+    Type '{ opacity: number; y: number; x: number; transition: { duration: number; ease: string; delay: number; }; }' is not assignable to type 'Variant'.
+      Type '{ opacity: number; y: number; x: number; transition: { duration: number; ease: string; delay: number; }; }' is not assignable to type 'TargetAndTransition'.
+        Type '{ opacity: number; y: number; x: number; transition: { duration: number; ease: string; delay: number; }; }' is not assignable to type '{ transition?: Transition<any> | undefined; transitionEnd?: ResolvedValues$1 | undefined; }'.
+          Types of property 'transition' are incompatible.
+            Type '{ duration: number; ease: string; delay: number; }' is not assignable to type 'Transition<any> | undefined'.
+              Type '{ duration: number; ease: string; delay: number; }' is not assignable to type 'TransitionWithValueOverrides<any>'.
+                Type '{ duration: number; ease: string; delay: number; }' is not assignable to type 'ValueAnimationTransition<any>'.
+                  Types of property 'ease' are incompatible.
+                    Type 'string' is not assignable to type 'Easing | Easing[] | undefined'.
+src/app/web-news/[id]/page.tsx(28,27): error TS2339: Property 'mediaType' does not exist on type '{ id: number; createdAt: Date; title: string; content: string; imageUrl: string | null; author: string; }'.
+src/app/web-news/[id]/page.tsx(43,28): error TS2339: Property 'category' does not exist on type '{ id: number; createdAt: Date; title: string; content: string; imageUrl: string | null; author: string; }'.
+src/app/web-news/[id]/page.tsx(65,29): error TS2339: Property 'category' does not exist on type '{ id: number; createdAt: Date; title: string; content: string; imageUrl: string | null; author: string; }'.
+src/app/web-news/[id]/page.tsx(80,30): error TS2339: Property 'views' does not exist on type '{ id: number; createdAt: Date; title: string; content: string; imageUrl: string | null; author: string; }'.
+src/app/web-news/page.tsx(20,16): error TS2353: Object literal may only specify known properties, and 'mediaType' does not exist in type 'NewsWhereInput'.

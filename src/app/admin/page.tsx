@@ -136,10 +136,10 @@ export default function AdminPage() {
     <div className="min-h-screen bg-slate-50 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8 text-center">
-          <h1 className="text-3xl font-extrabold text-slate-900 sm:text-4xl">
+          <h1 className="text-3xl font-extrabold text-black sm:text-4xl">
             Admin Dashboard
           </h1>
-          <p className="mt-2 text-lg text-slate-600">
+          <p className="mt-2 text-lg text-black font-medium">
             Manage your news articles — add new stories or remove outdated ones
           </p>
         </div>
@@ -159,13 +159,13 @@ export default function AdminPage() {
           {/* Add News Form */}
           <div className="lg:col-span-1">
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 sticky top-24">
-              <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center">
+              <h3 className="text-xl font-bold text-black mb-6 flex items-center">
                 <span className="mr-2">✍️</span> Publish New Article
               </h3>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label
-                    className="block text-sm font-medium text-slate-700 mb-1"
+                    className="block text-sm font-bold text-black mb-1"
                     htmlFor="title"
                   >
                     Title
@@ -184,7 +184,7 @@ export default function AdminPage() {
                 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">
+                    <label className="block text-sm font-bold text-black mb-1">
                       Category
                     </label>
                     <select
@@ -202,7 +202,7 @@ export default function AdminPage() {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">
+                    <label className="block text-sm font-bold text-black mb-1">
                       Type
                     </label>
                     <select
@@ -219,7 +219,7 @@ export default function AdminPage() {
 
                 {formData.mediaType === "video" && (
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">
+                    <label className="block text-sm font-bold text-black mb-1">
                       YouTube Video ID
                     </label>
                     <input
@@ -236,7 +236,7 @@ export default function AdminPage() {
 
                 <div>
                   <label
-                    className="block text-sm font-medium text-slate-700 mb-1"
+                    className="block text-sm font-bold text-black mb-1"
                     htmlFor="content"
                   >
                     Content / Summary
@@ -255,7 +255,7 @@ export default function AdminPage() {
 
                 <div>
                   <label
-                    className="block text-sm font-medium text-slate-700 mb-1"
+                    className="block text-sm font-bold text-black mb-1"
                     htmlFor="imageUrl"
                   >
                     Image URL (optional)
@@ -272,7 +272,7 @@ export default function AdminPage() {
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <label className="flex items-center space-x-2 text-sm text-slate-700">
+                  <label className="flex items-center space-x-2 text-sm font-medium text-black">
                     <input
                       type="checkbox"
                       name="featured"
@@ -282,7 +282,7 @@ export default function AdminPage() {
                     />
                     <span>Featured (Hero)</span>
                   </label>
-                  <label className="flex items-center space-x-2 text-sm text-slate-700">
+                  <label className="flex items-center space-x-2 text-sm font-medium text-black">
                     <input
                       type="checkbox"
                       name="trending"
@@ -309,7 +309,7 @@ export default function AdminPage() {
           <div className="lg:col-span-2">
             <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
               <div className="px-6 py-5 border-b border-slate-200 bg-slate-50 flex justify-between items-center">
-                <h3 className="text-lg font-bold text-slate-900">
+                <h3 className="text-lg font-bold text-black">
                   📋 Published Articles
                 </h3>
                 <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
@@ -339,7 +339,7 @@ export default function AdminPage() {
                       className="p-6 hover:bg-slate-50 transition-colors flex flex-col sm:flex-row gap-4"
                     >
                       <div className="flex-1">
-                        <h4 className="text-base font-bold text-slate-900 line-clamp-1 mb-1">
+                        <h4 className="text-base font-bold text-black line-clamp-1 mb-1">
                           {item.title}
                         </h4>
                         <div className="flex items-center text-xs text-slate-500 mb-2 space-x-2">
@@ -360,7 +360,8 @@ export default function AdminPage() {
                             )}
                           </span>
                         </div>
-                        <p className="text-sm text-slate-600 line-clamp-2">
+
+                        <p className="text-sm text-black line-clamp-2">
                           {item.content}
                         </p>
                       </div>

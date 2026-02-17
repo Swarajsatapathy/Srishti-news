@@ -2,54 +2,7 @@ import { getSupabaseServiceRoleClient, isSupabaseConfigured } from "@/lib/supaba
 
 const TABLE_NAME = "editor_picks";
 
-export const demoEditorPicks = [
-  {
-    id: 1,
-    title: "Hyderabad metro expansion connects new cultural hub",
-    category: "City Desk",
-    summary:
-      "The long-awaited metro extension opens to commuters, bringing faster travel and renewed investment to the old town.",
-    articleUrl: "https://srishti.news/newsroom/demo-hyderabad",
-    imageUrl: "https://images.unsplash.com/photo-1529429617124-aee0014819be?w=1200&q=80",
-    author: "Newsroom Desk",
-    publishedAt: new Date().toISOString(),
-    priority: 1,
-    status: "published",
-    mediaType: "article",
-    updatedAt: new Date().toISOString()
-  },
-  {
-    id: 2,
-    title: "Odisha coastal clean-up rallies 2,000 volunteers",
-    category: "Environment",
-    summary:
-      "Students and fisherfolk collaborate for the region's biggest shoreline clean-up ahead of tourist season.",
-    articleUrl: "https://srishti.news/newsroom/demo-coast",
-    imageUrl: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80",
-    author: "Srishti News Digital",
-    publishedAt: new Date().toISOString(),
-    priority: 2,
-    status: "draft",
-    mediaType: "article",
-    updatedAt: new Date().toISOString()
-  },
-  {
-    id: 3,
-    title: "Watch: Editor's Pick – Stories behind the headlines",
-    category: "Video",
-    summary: "Our editors explain the week in under five minutes.",
-    articleUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    imageUrl: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg",
-    author: "Video Desk",
-    publishedAt: new Date().toISOString(),
-    priority: 3,
-    status: "published",
-    mediaType: "video",
-    videoId: "dQw4w9WgXcQ",
-    videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    updatedAt: new Date().toISOString()
-  }
-];
+export const demoEditorPicks: any[] = [];
 
 function mapDbRecord(item: any) {
   return {

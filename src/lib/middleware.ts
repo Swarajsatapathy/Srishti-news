@@ -5,6 +5,7 @@ export async function requireAuth(): Promise<JWTPayload> {
   const cookieStore = await cookies();
   const token = cookieStore.get("token")?.value;
 
+
   if (!token) {
     throw new Error("Unauthorized");
   }
@@ -12,7 +13,7 @@ export async function requireAuth(): Promise<JWTPayload> {
   try {
     const payload = await verifyToken(token);
     return payload;
-  } catch {
+  } catch (error) {
     throw new Error("Unauthorized");
   }
 }

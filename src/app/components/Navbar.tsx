@@ -39,19 +39,27 @@ export default function Navbar() {
     { label: "Contact Us", href: "/contact" },
   ];
 
-  const fallbackTicker: TickerItem[] = [
-    { id: 1, title: "Breaking: Major cultural festival begins today" },
-    { id: 2, title: "Prime Minister inaugurates new development project" },
-    { id: 3, title: "Nursing education becomes service and reform focus" },
-  ];
+  const fallbackTicker: TickerItem[] = [];
 
   useEffect(() => {
     fetch("/api/auth/me")
-      .then((res) => (res.ok ? res.json() : null))
-      .then((data) => {
-        if (data?.user) setUser(data.user);
+      .then((res) => {
+        if (res.ok) return res.json();
+        console.log("Navbar: Auth check failed", res.status);
+        return null;
       })
-      .catch(() => {});
+      .then((data) => {
+        console.log("Navbar: Auth data received", data);
+        if (data?.user) {
+          setUser(data.user);
+        } else {
+          setUser(null);
+        }
+      })
+      .catch((err) => {
+        console.error("Navbar: Auth fetch error", err);
+        setUser(null);
+      });
   }, []);
 
   useEffect(() => {
@@ -67,7 +75,7 @@ export default function Navbar() {
       .then((data) => {
         if (!isMounted) return;
         const items = (data?.news || [])
-          .slice(0, 6)
+          .slice(0, 8)
           .map((item: TickerItem) => ({
             id: item.id,
             title: item.title,
@@ -84,9 +92,13 @@ export default function Navbar() {
   }, []);
 
   const handleSignOut = async () => {
-    await fetch("/api/auth/signout", { method: "POST" });
+    try {
+      await fetch("/api/auth/signout", { method: "POST" });
+    } catch (e) {
+      console.error("Signout failed", e);
+    }
     setUser(null);
-    window.location.href = "/";
+    window.location.reload(); // Force reload to ensure clean state
   };
 
   const timeLabel = now
@@ -177,7 +189,7 @@ export default function Navbar() {
                   href="/auth"
                   className="rounded bg-red-600 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-white hover:bg-red-500"
                 >
-                  Join as Reporter
+                  Login
                 </Link>
               )}
             </div>

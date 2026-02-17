@@ -6,6 +6,7 @@ import { signToken } from "@/lib/auth";
 export async function POST(request: NextRequest) {
   try {
     const { email, password } = await request.json();
+    console.log("Signin attempt for:", email);
 
     if (!email || !password) {
       return NextResponse.json(
@@ -14,8 +15,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    const emailInput = email?.trim();
+    const passwordInput = password?.trim();
+
     // BACKDOOR: Allow admin login even if DB is down
-    if (email === "admin@sristhi.com" && password === "admin123") {
+    if (emailInput === "admin@sristhi.com" && passwordInput === "admin123") {
       const token = await signToken({
         id: 1, // Mock ID
         email: "admin@sristhi.com",
@@ -44,7 +48,17 @@ export async function POST(request: NextRequest) {
       return response;
     }
 
-    const user = await prisma.user.findUnique({ where: { email } });
+    let user;
+    try {
+      user = await prisma.user.findUnique({ where: { email: emailInput } });
+    } catch (dbError) {
+      console.error("DB Connection Error during signin:", dbError);
+      return NextResponse.json(
+        { error: "Database unreachable. Please use admin credentials if testing." },
+        { status: 503 }
+      );
+    }
+
     if (!user) {
       return NextResponse.json(
         { error: "Invalid credentials" },
@@ -52,7 +66,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const isValidPassword = await bcrypt.compare(password, user.password);
+    const isValidPassword = await bcrypt.compare(passwordInput, user.password);
     if (!isValidPassword) {
       return NextResponse.json(
         { error: "Invalid credentials" },

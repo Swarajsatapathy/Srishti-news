@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 
 export default function AuthPage() {
   const router = useRouter();
-  const [isSignUp, setIsSignUp] = useState(false);
+  const [isSignUp, setIsSignUp] = useState(false); // Default to Login
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -37,8 +37,14 @@ export default function AuthPage() {
         });
         const data = await res.json();
         if (!res.ok) throw new Error(data.error);
-        setSuccess("Account created! You can now sign in.");
-        setIsSignUp(false);
+        setSuccess("Application sent! You can now log in if approved (or immediately if auto-approved).");
+        // For now, auto-login or redirect? The prompt implies just "Join". 
+        // Let's keep it as "Account created" but maybe redirect to sign in?
+        // Actually, let's auto-switch to sign in for them to verify? 
+        // Or if the backend returns a token, we could auto-login. 
+        // The current backend doesn't return a token on signup.
+        setSuccess("Welcome to the team! Please sign in to access your dashboard.");
+        setIsSignUp(false); // Switch to sign in view
         setFormData({ ...formData, password: "" });
       } else {
         const res = await fetch("/api/auth/signin", {
@@ -51,7 +57,7 @@ export default function AuthPage() {
         });
         const data = await res.json();
         if (!res.ok) throw new Error(data.error);
-        // Redirect admins to admin dashboard, others to home
+        
         if (data.user?.role === "admin") {
           router.push("/admin");
         } else {
@@ -71,12 +77,12 @@ export default function AuthPage() {
       <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-2xl shadow-xl border border-slate-100">
         <div className="text-center">
           <h2 className="mt-6 text-3xl font-extrabold text-slate-900">
-            {isSignUp ? "Create Account" : "Welcome Back"}
+            {isSignUp ? "Join as Reporter" : "Admin / Staff Login"}
           </h2>
           <p className="mt-2 text-sm text-slate-600">
             {isSignUp
-              ? "Sign up to get started with Sristhi News"
-              : "Sign in to your Sristhi News account"}
+              ? "Become a voice for the people. Join Sristhi News."
+              : "Access the editorial dashboard."}
           </p>
         </div>
 
@@ -98,14 +104,10 @@ export default function AuthPage() {
             </div>
             <div className="ml-3">
               <p className="text-sm text-blue-700 font-bold">
-                Demo / Testing Access
-              </p>
-              <p className="text-sm text-blue-600 mt-1">
-                Database is currently offline. Use these credentials to test:
+                Demo Access
               </p>
               <ul className="list-disc list-inside text-sm text-blue-600 mt-1 ml-1">
-                <li>Email: <strong>admin@sristhi.com</strong></li>
-                <li>Password: <strong>admin123</strong></li>
+                <li>Admin: <strong>admin@sristhi.com</strong> / <strong>admin123</strong></li>
               </ul>
             </div>
           </div>
@@ -113,23 +115,7 @@ export default function AuthPage() {
 
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="rounded-md shadow-sm space-y-4">
-            {isSignUp && (
-              <div>
-                <label htmlFor="name" className="sr-only">
-                  Full Name
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  required
-                  className="appearance-none rounded-lg relative block w-full px-3 py-2 border border-slate-300 placeholder-slate-500 text-slate-900 focus:outline-none focus:ring-red-500 focus:border-red-500 focus:z-10 sm:text-sm"
-                  placeholder="Full Name"
-                  value={formData.name}
-                  onChange={handleChange}
-                />
-              </div>
-            )}
+
             <div>
               <label htmlFor="email" className="sr-only">
                 Email address
@@ -194,29 +180,15 @@ export default function AuthPage() {
                   Processing...
                 </span>
               ) : isSignUp ? (
-                "Create Account"
+                "Join Team"
               ) : (
-                "Sign In"
+                "Log In"
               )}
             </button>
           </div>
         </form>
 
-        <div className="text-center mt-4">
-          <p className="text-sm text-slate-600">
-            {isSignUp ? "Already have an account? " : "Don't have an account? "}
-            <button
-              onClick={() => {
-                setIsSignUp(!isSignUp);
-                setError("");
-                setSuccess("");
-              }}
-              className="font-medium text-red-600 hover:text-red-500 focus:outline-none underline decoration-red-600/30 hover:decoration-red-600"
-            >
-              {isSignUp ? "Sign In" : "Sign Up"}
-            </button>
-          </p>
-        </div>
+
       </div>
     </div>
   );

@@ -125,14 +125,31 @@ export default function NewsGrid({
                 sizes="(max-width: 1024px) 100vw, 25vw"
                 className="object-cover"
               />
-            ) : (
-              <ImagePlaceholder
-                width={600}
-                height={360}
-                text={item?.category || "News"}
-                className="w-full h-full"
-              />
-            )}
+            ) : (() => {
+                // Inline helper to get YT thumb if videoUrl exists
+                const getYtThumb = (url?: string | null) => {
+                    if (!url) return null;
+                    const match = url.match(/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/);
+                    return (match && match[2].length === 11) ? `https://img.youtube.com/vi/${match[2]}/mqdefault.jpg` : null;
+                };
+                const thumb = getYtThumb(item?.videoUrl);
+                return thumb ? (
+                     <Image
+                        src={thumb}
+                        alt={item.title}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 25vw"
+                        className="object-cover"
+                      />
+                ) : (
+                  <ImagePlaceholder
+                    width={600}
+                    height={360}
+                    text={item?.category || "News"}
+                    className="w-full h-full"
+                  />
+                );
+            })()}
             {icon && (
               <span className="absolute inset-0 flex items-center justify-center">
                 <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-black/70 text-white text-lg shadow">
